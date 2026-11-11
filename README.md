@@ -46,22 +46,22 @@ LinkedIn emails can be added later as a **second source of links only** (see Fut
 | Ashby | `https://api.ashbyhq.com/posting-api/job-board/{company}` |
 | Workable | `https://apply.workable.com/api/v1/widget/accounts/{company}` |
 
-**Secondary: job boards with feeds or APIs.** Used for extra postings and for discovering companies to add to the list above.
+**Secondary: Hacker News "Who is hiring?"** A monthly thread where many AI and LLM startups post engineering roles. It is readable through the Algolia HN API. Posts are free text, so the LLM parses them into postings.
 
-- AI Engineer roles:
-  - Hacker News "Who is hiring?" (monthly thread, readable through the Algolia HN API; posts are free text, so an LLM parses them)
-  - Remote OK (public JSON API at `remoteok.com/api`; their terms require attribution and a link back)
-  - We Work Remotely (RSS feed per category)
-  - Himalayas (public JSON jobs API)
-  - Wellfound (many startups, but no open API and it blocks bots; use it manually to find companies, then track them through their ATS)
-- Blockchain Developer roles:
-  - web3.career (JSON API, needs a free token)
-  - Crypto Job List (RSS feed)
-  - findweb3.com (https://findweb3.com/jobs; check whether it has a feed before building against it)
+**Company discovery (manual, not automated).** These sites have many AI startups but no open API and they block bots. I use them by hand to find AI and crypto companies, then add those companies to the ATS list above:
+
+- Wellfound
+- Y Combinator Work at a Startup (most recent YC companies are AI startups)
+
+**Blockchain Developer roles: web3 job boards.**
+
+- web3.career (JSON API, needs a free token)
+- Crypto Job List (RSS feed)
+- findweb3.com (https://findweb3.com/jobs; check whether it has a feed before building against it)
 
 **Avoid:** LinkedIn, Indeed and Glassdoor (automating them breaks their terms of service and they block bots), and boards that only redirect to an external apply link without structured data.
 
-**v1 plan:** Greenhouse, Lever and Ashby for 20–50 hand-picked companies, plus web3.career for blockchain roles. Every endpoint and feed above must be checked to confirm it still works before building against it.
+**v1 plan:** Greenhouse, Lever and Ashby for 20–50 hand-picked AI and crypto companies, plus the monthly Hacker News thread and the web3 job boards. Every endpoint above must be checked to confirm it still works before building against it.
 
 ### 2. Classify jobs
 
