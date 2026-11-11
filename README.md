@@ -1,16 +1,16 @@
-# Nextro
+# NextRole
 
-Nextro is an AI agent that applies to jobs for me. It finds job postings that fit my profile, decides which ones are a good match, submits my CV and a cover letter, and keeps a record I can review in a dashboard web app. The goal is that I never apply by hand; I only check what Nextro has applied to.
+NextRole is an AI agent that applies to jobs for me. It finds job postings that fit my profile, decides which ones are a good match, submits my CV and a cover letter, and keeps a record I can review in a dashboard web app. The goal is that I never apply by hand; I only check what NextRole has applied to.
 
 ## Why this project exists
 
-- **Save time.** Job hunting is repetitive. Nextro does the searching and applying automatically.
+- **Save time.** Job hunting is repetitive. NextRole does the searching and applying automatically.
 - **Learn.** I am building this to learn **LangChain** and **LangGraph** hands-on.
-- **Portfolio.** I want to present Nextro as an AI engineering project when applying for AI Engineer positions.
+- **Portfolio.** I want to present NextRole as an AI engineering project when applying for AI Engineer positions.
 
 ## Who it applies for
 
-Nextro applies on my behalf for two kinds of roles:
+NextRole applies on my behalf for two kinds of roles:
 
 1. **AI Engineer** (primary). I have been building AI-powered applications recently and this is the area I want to work in.
 2. **Blockchain Developer** (secondary). I have prior experience as a blockchain developer, so these roles are also a fit.
@@ -33,7 +33,7 @@ Collect new job postings from a source.
 - LinkedIn emails only contain links back to LinkedIn. Applying on LinkedIn itself requires a logged-in session, is heavily protected against bots, and automating it violates LinkedIn's terms of service, which can get the account restricted.
 - Job board "Apply" buttons usually lead to a small number of applicant tracking systems (Greenhouse, Lever, Ashby, Workable). Their forms are predictable, which makes automatic applying realistic.
 
-LinkedIn emails can be added later as a **second source of links only** (see Future versions). Nextro would read the job links from the email and apply through the company's own careers page, never through LinkedIn automation.
+LinkedIn emails can be added later as a **second source of links only** (see Future versions). NextRole would read the job links from the email and apply through the company's own careers page, never through LinkedIn automation.
 
 Candidate boards for AI and Web3 roles: Crypto Job List, web3.career, - https://findweb3.com/jobs. The first implementation will use whichever of these has the simplest feed or API.
 
@@ -63,7 +63,7 @@ A cron job on **GitHub Actions** triggers the agent, for example **3 times per d
 
 A small web app that shows:
 
-- how many postings Nextro applied to
+- how many postings NextRole applied to
 - for each application: the job, company, role type, date, fit score and reason, and exactly what information was submitted (which CV, which cover letter, the form answers)
 
 ## Future versions
@@ -74,7 +74,7 @@ These are planned features. We implement them step by step, after v1 works end t
 - **Custom CV and cover letter per job.** Generate a tailored CV and cover letter for every posting, based on the specific job description.
 - **Human in the loop.** For postings that are an especially good match, notify me before applying so I can approve or edit the application first.
 - **Video applications.** If a posting allows a video, pick one of my pre-recorded videos (AI Engineer video or Blockchain Developer video) and attach it.
-- **Apply to a link I send.** I keep seeing jobs on social media. I should be able to send Nextro a link to a posting and have it apply on its own.
+- **Apply to a link I send.** I keep seeing jobs on social media. I should be able to send NextRole a link to a posting and have it apply on its own.
 
 ## Suggested architecture (to be refined)
 
