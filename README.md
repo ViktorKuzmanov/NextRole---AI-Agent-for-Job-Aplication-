@@ -35,7 +35,33 @@ Collect new job postings from a source.
 
 LinkedIn emails can be added later as a **second source of links only** (see Future versions). NextRole would read the job links from the email and apply through the company's own careers page, never through LinkedIn automation.
 
-Candidate boards for AI and Web3 roles: Crypto Job List, web3.career, - https://findweb3.com/jobs. The first implementation will use whichever of these has the simplest feed or API.
+#### Sources
+
+**Primary: ATS job APIs.** Most companies post their jobs on an applicant tracking system that exposes every open job as public JSON. No login and no scraping is needed, and the posting and the application form live on the same ATS, so the Apply step does not have to follow redirects. NextRole keeps a list of target companies (AI labs, AI startups, crypto companies) and polls their boards:
+
+| ATS | Public endpoint |
+|---|---|
+| Greenhouse | `https://boards-api.greenhouse.io/v1/boards/{company}/jobs?content=true` |
+| Lever | `https://api.lever.co/v0/postings/{company}?mode=json` |
+| Ashby | `https://api.ashbyhq.com/posting-api/job-board/{company}` |
+| Workable | `https://apply.workable.com/api/v1/widget/accounts/{company}` |
+
+**Secondary: job boards with feeds or APIs.** Used for extra postings and for discovering companies to add to the list above.
+
+- AI Engineer roles:
+  - Hacker News "Who is hiring?" (monthly thread, readable through the Algolia HN API; posts are free text, so an LLM parses them)
+  - Remote OK (public JSON API at `remoteok.com/api`; their terms require attribution and a link back)
+  - We Work Remotely (RSS feed per category)
+  - Himalayas (public JSON jobs API)
+  - Wellfound (many startups, but no open API and it blocks bots; use it manually to find companies, then track them through their ATS)
+- Blockchain Developer roles:
+  - web3.career (JSON API, needs a free token)
+  - Crypto Job List (RSS feed)
+  - findweb3.com (https://findweb3.com/jobs; check whether it has a feed before building against it)
+
+**Avoid:** LinkedIn, Indeed and Glassdoor (automating them breaks their terms of service and they block bots), and boards that only redirect to an external apply link without structured data.
+
+**v1 plan:** Greenhouse, Lever and Ashby for 20–50 hand-picked companies, plus web3.career for blockchain roles. Every endpoint and feed above must be checked to confirm it still works before building against it.
 
 ### 2. Classify jobs
 
