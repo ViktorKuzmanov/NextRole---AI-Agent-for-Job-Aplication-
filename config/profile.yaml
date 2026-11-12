@@ -1,0 +1,41 @@
+# Who NextRole applies for. The classifier and the cover-letter writer both
+# read this file, so the more specific it is, the better the matches.
+# TODO(Viktor): replace the placeholder lines with your real details.
+name: Viktor Kuzmanov
+email: ""        # leave empty here; set in .env / secrets before real applying
+location: ""     # e.g. "Skopje, North Macedonia (remote, CET)"
+links:
+  github: ""
+  linkedin: ""
+  portfolio: ""
+
+target_roles:
+  ai_engineer: >
+    Primary target. Building LLM-powered applications and agents:
+    LangChain, LangGraph, RAG, tool use, evaluation, Python/TypeScript backends.
+  blockchain_developer: >
+    Secondary target. Smart contract and dApp development, based on prior
+    professional experience as a blockchain developer.
+
+summary: >
+  Software engineer who has recently been building AI-powered applications
+  (LLM agents and workflows with LangChain and LangGraph) and previously
+  worked as a blockchain developer.
+
+skills:
+  - Python
+  - TypeScript
+  - LangChain
+  - LangGraph
+  - LLM agents, RAG, prompt engineering
+  - Solidity / smart contracts
+  - Web3 dApp development
+
+# Hard constraints the classifier must respect.
+constraints:
+  - Remote, or a location I can legally work from
+  - Skip roles that need a PhD or are pure ML research
+  - Skip non-engineering roles (sales, marketing, recruiting, legal)
+  - Skip internships
+
+cv_path: ""      # path to the CV file that gets uploaded (used by the apply step)

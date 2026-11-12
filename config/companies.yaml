@@ -1,0 +1,24 @@
+# Target companies, polled through their public ATS job APIs.
+# slug = the company's board name in the ATS URL. All slugs below returned
+# HTTP 200 on 2026-11-12; a board that starts failing is logged and skipped.
+greenhouse:
+  - anthropic
+  - scaleai
+  - togetherai
+  - coinbase
+  - consensys
+  - fireblocks
+lever:
+  - kraken
+  - offchainlabs
+ashby:
+  - langchain
+  - openai
+  - cohere
+  - perplexity
+  - elevenlabs
+  - cursor
+  - llamaindex
+  - pinecone
+  - uniswap
+  - phantom

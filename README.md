@@ -123,13 +123,31 @@ GitHub Actions cron (3x/day)
 - **SQLite or a JSON file** as the store for v1, read by the dashboard.
 - **Dashboard**: a simple web app (FastAPI + a small frontend, or Streamlit) reading the store.
 
+## Running it
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install -e ".[dev]"
+cp .env.example .env        # add ANTHROPIC_API_KEY
+.venv/bin/nextrole fetch    # fetch + title screen only, no LLM calls
+.venv/bin/nextrole run --limit 10   # full workflow on at most 10 new postings
+.venv/bin/nextrole list -v --status prepared
+.venv/bin/nextrole graph    # Mermaid diagram of the workflow
+.venv/bin/pytest
+```
+
+- `config/companies.yaml`: the companies whose boards are polled.
+- `config/profile.yaml`: my profile, which the classifier and cover-letter writer read.
+- `src/nextrole/graph.py`: the LangGraph workflow (`fetch_jobs -> prefilter -> classify -> apply -> record`).
+- `src/nextrole/chains.py`: the LangChain chains (classification with structured output, cover letter).
+- Results are stored in `data/nextrole.db` (SQLite). A posting is classified once; later runs only look at new ones.
+
 ## Roadmap
 
 | Step | What | Status |
 |------|------|--------|
-| 1 | Fetch postings from one job board | planned |
-| 2 | Classify postings against my profile | planned |
-| 3 | Apply with CV + cover letter (hardcoded details) | planned |
+| 1 | Fetch postings from one job board | done (Greenhouse, Lever, Ashby) |
+| 2 | Classify postings against my profile | built, not yet run against the live model |
+| 3 | Apply with CV + cover letter (hardcoded details) | dry run only: writes the cover letter and records the package, sends nothing |
 | 4 | GitHub Actions cron, 3x/day | planned |
 | 5 | Dashboard of applications | planned |
 | 6+ | Future versions listed above | later |
